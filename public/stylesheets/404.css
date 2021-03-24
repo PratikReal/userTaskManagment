@@ -1,0 +1,78 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+p, h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    background: #f3f3f3;
+}
+
+.error-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.error-wrapper .title {
+    font-size: 100px;
+    font-weight: 700;
+    color: rgb(196, 157, 30);
+}
+
+
+.error-wrapper .info {
+    font-size: 14px;
+}
+
+.home-btn, 
+.home-btn:focus, 
+.home-btn:visited {
+    text-decoration: none;
+    font-size: 16px;
+    color: rgb(218, 172, 24);
+
+    padding: 15px 77px;
+    border: 1px solid rgb(255, 196, 0);
+    border-radius: 3px;
+    display: block;
+    margin: 20px 0;
+    width: max-content;
+    background-color: transparent;
+    outline: 0;
+}
+
+.home-btn:hover
+{
+    background-color:  rgb(218, 172, 24);
+    color: rgb(128, 128, 0);
+    cursor: pointer;
+    
+}
+
+
+
+
+.man-icon {
+    background: url('https://www.hotstar.com/assets/b5e748831c911ca02f9c07afc11f2ae5.svg') center center no-repeat;
+    display: inline-block;
+    height: 120px;
+    width: 118px;
+    margin-bottom: 16px;
+}
