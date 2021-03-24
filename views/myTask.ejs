@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LOGO</title>
+    <link rel="shortcut icon" type="image/svg" href="/images/logo.svg" />
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/adminDashboradPage.css">
+
+</head>
+
+<body style="background-color: #bfbfbd !important;">
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+        <div class="container">
+            <div class="card login-card" style="min-height: 500px">
+                <div class="row no-gutters">
+
+                    <div class="col-md-12">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                                <ul class="navbar-nav mr-auto  mt-lg-0">
+                                    <a href="/profile"><button class="btn btn-dark my-2 my-sm-0 pl-2 pr-2 mr-2"
+                                            type="submit">Go To Back</button></a>
+                                    <a href="/userTaskCompletePage"><button
+                                            class="btn btn-success my-2 my-sm-0 pl-2 pr-2 mr-2" type="submit">My
+                                            Completed Task</button></a>
+                                </ul>
+
+                                <form class="form-inline">
+                                    <input class="form-control mr-sm-2 m-2" type="search"
+                                        placeholder="Search Posts By Dates" aria-label="Search">
+                                </form>
+                            </div>
+                        </nav>
+                        <div class="card-body">
+                            <h1 class="navbar-brand " href="#">My Tasks Page NEW</h1>
+                            <div style="overflow-y: scroll; max-height: 400px;">
+                                <% for(var i=0; i<user.addTasks.length; i++){ %>
+
+                                   <a href="/myTaskDetailsPage/<%= user.addTasks[i]._id %>" style="text-decoration: none;"> <div class="media p-2 mb-2 " style="background-color: #e7e7e7;">
+                                        <div class="media-body">
+                                            <div class="row d-flex m-0">
+                                                <p class="ml-0" style="font-weight: bolder;">Task Title : <span
+                                                        style="font-weight: lighter;">
+                                                        <%= user.addTasks[i].addTaskTitle %>
+
+                                                    </span></p>
+                                            </div>
+
+                                            <p class="" style=" font-weight: bolder;"> Task Submission Date : <span
+                                                    style="font-weight: lighter;" id="addTaskDate">
+                                                    <%= user.addTasks[i].addTaskDate %>
+                                                </span></p>
+
+
+                                            <p class="mb-1" style="font-weight: bold;"> Task Discription : <span
+                                                    style="font-weight: lighter;">
+                                                    <%= user.addTasks[i].addTaskDiscription %>
+
+                                                </span></p>
+                                            </div>
+                                    </div></a>
+                                    
+
+                                    <% } %>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script>
+
+       
+    </script>
+
+</body>
+
+</html>

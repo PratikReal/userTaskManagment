@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LOGO</title>
+    <link rel="shortcut icon" type="image/svg" href="/images/logo.svg" />
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+        <div class="container">
+            <div class="card login-card">
+                <div class="row no-gutters">
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="card-body" style="background-color: #ebebe9;">
+                                <div class="d-flex flex-column align-items-center text-center mb-1">
+                                    <img src="<%= user.profilePic %>" alt="Admin" class="rounded-circle" width="150px"
+                                        height="140px">
+                                    <h4>
+                                        <%= user.username %>
+                                    </h4>
+                                    <p class="text-secondary mb-1">Full Stack Developer</p>
+                                </div>
+                                
+                                <div id="details" class="text-center">
+                                    <h4>change your profile pic :</h4>
+                                    <form action="/uploade" method="post" enctype="multipart/form-data">
+                                        <div class="custom-file">
+                                            <input type="file" name="prflimage" class="custom-file-input"
+                                                id="customFile">
+                                            <label class="custom-file-label text-left" for="customFile">Choose
+                                                Image</label>
+                                        </div>
+                                        <input type="submit" class="btn btn-block login-btn mt-2 mb-4" value="Upload">
+                                    </form>
+                                    <a style="text-decoration: none;" href="/changePassword"><button class="btn btn-block login-btn mt-2 mb-4" >Change Password</button></a>
+                                    <div class="alert alert-info" role="alert">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. doloribus minus.
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 pt-0">
+                        <div class="card-body">
+                            <div class="brand-wrapper">
+                                <img src="/images/logo.svg" alt="logo" class="logo">
+                            </div>
+                            <p class="login-card-description">Edit Profile</p>
+                            <form action="/editProfile" method="POST" autocomplete="off">
+                                <div class="form-group col-md-10">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" name="firstName" id="username" class="form-control"
+                                        value=<%=user.firstName ? user.firstName :'' %> >
+                                </div>
+                                <div class="form-group col-md-10">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" name="lastName" id="username" class="form-control"
+                                        value=<%=user.lastName ? user.lastName :'' %> >
+                                </div>
+                                <div class="form-group col-md-10">
+                                    <label for="lastName">Email</label>
+                                    <input type="email" name="email" id="username" class="form-control"
+                                        value=<%=user.email ? user.email :'' %>>
+                                </div>
+                                <div class="form-group col-md-10">
+                                    <label for="lastName">Mobile Number</label>
+                                    <input type="number" name="number" id="username" class="form-control"
+                                        value=<%=user.number ? user.number :'' %> >
+                                </div>
+                                <input name="login" id="login" class="btn btn-block login-btn col-md-10" type="submit"
+                                    value="Save Profile">
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGO</title>
+    <link rel="shortcut icon" type="image/svg" href="logo.svg" />
+    <link rel="stylesheet" href="/stylesheets/adminDashboradPage.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.jshttps://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
+</head>
+
+<body>
+    <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
+        <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
+        <div class="sidebar-header  align-items-center px-3 text-center py-4">
+            <img class="rounded-pill" width="100"
+                src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance"
+                alt="">
+            <div class="ms-12 mt-4">
+                <h5 class="fs-6 mb-0">
+                    <a class="text-decoration-none" href="#">Admin</a>
+                </h5>
+            </div>
+        </div>
+
+
+
+        <ul class="categories list-unstyled">
+
+
+            <li class="active">
+                <i class="uil-calendar-alt"></i><a href="/adminDashboardPage">Today</a>
+            </li>
+           
+            <!-- <li class="">
+                <i class="uil-setting"></i><a href="/adminTaskDetailsPage">Task Details</a>
+            </li> -->
+
+            <li class="">
+                <i class="uil-bag"></i><a href="/adminTaskDetailsList">Task Lists</a>
+            </li>
+
+            <li class="">
+                <i class="uil-bag"></i><a href="/completeTaskDetailsPage">Completed Tasks </a>
+            </li>
+
+            <li class="">
+                <i class="uil-user"></i><a href="/adminDashboardPageUsers">Users</a>
+            </li>
+           
+
+
+
+        </ul>
+    </aside>
+
+    <section id="wrapper">
+        <nav class="navbar navbar-expand-md">
+            <div class="container-fluid mx-2">
+                <div class="navbar-header">
+                    <p class="fs-normal mb-0 " style="color: white;">AddTask</p>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#toggle-navbar" aria-controls="toggle-navbar" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i class="uil-bars text-white"></i>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="toggle-navbar">
+                    <ul class="navbar-nav ms-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="uil-comments-alt"></i><span>23</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="uil-bell"></i><span>98</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i data-show="show-side-navigation1" class="uil-bars show-side-btn"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+
+        <section class="admins p-4">
+            <input class="" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search Usernames..">
+            <ul id="myUL">
+                <% for(var i=0; i<userList.length; i++){ %>
+                    <li style="list-style: none;">
+                        <div class="col-md-12">
+                            <div class="box ">
+                                <div class="admin d-flex align-items-center rounded-2 p-3 mb-4">
+                                    <div class="img d-flex ">
+                                        <img class="img-fluid rounded-pill" width="75" height="75"
+                                            src=<%=userList[i].profilePic %>
+                                        alt="admin">
+                                    </div>
+                                    <div class="ms-3 text-center">
+                                        <h3 class="fs-5 mb-1">
+                                            <%= userList[i].username %>
+                                        </h3>
+                                        <a href="/addTaskforUserByAdmin/<%= userList[i].username %>"
+                                            style="text-decoration: none;"><button
+                                            class="btn btn-dark mr-0 p-1">Add Task</button></a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </li>
+                    <% } %>
+            </ul>
+        </section>
+
+
+
+
+
+
+    </section>
+
+
+
+
+    <script src="/javascripts/adminDashboardPage.js"></script>
+    <script>
+        function myFunction() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myUL");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                h3 = li[i].getElementsByTagName("h3")[0];
+                txtValue = h3.textContent || h3.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

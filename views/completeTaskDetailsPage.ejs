@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGO</title>
+    <link rel="shortcut icon" type="image/svg" href="logo.svg" />
+    <link rel="stylesheet" href="/stylesheets/adminDashboradPage.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.jshttps://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
+</head>
+
+<body>
+    <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
+        <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
+        <div class="sidebar-header  align-items-center px-3 text-center py-4">
+            <img class="rounded-pill" width="100"
+                src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance"
+                alt="">
+            <div class="ms-12 mt-4">
+                <h5 class="fs-6 mb-0">
+                    <a class="text-decoration-none" href="#">Admin</a>
+                </h5>
+            </div>
+        </div>
+
+
+
+        <ul class="categories list-unstyled">
+
+
+            <li class="active">
+                <i class="uil-calendar-alt"></i><a href="/adminDashboardPage">Today</a>
+            </li>
+            
+            <!-- <li class="">
+                <i class="uil-bag"></i><a href="/adminTaskDetailsPage">Tasks Details</a>
+            </li> -->
+
+            <li class="">
+                <i class="uil-bag"></i><a href="/adminTaskDetailsList">Tasks Lists</a>
+            </li>
+
+
+            <li class="">
+                <i class="uil-bag"></i><a href="/completeTaskDetailsPage">Completed Tasks</a>
+            </li>
+
+            <li class="">
+                <i class="uil-user"></i><a href="/adminDashboardPageUsers">Users</a>
+            </li>
+
+
+
+        </ul>
+    </aside>
+
+    <section id="wrapper">
+        <nav class="navbar navbar-expand-md">
+            <div class="container-fluid mx-2">
+                <div class="navbar-header">
+                    <p class="fs-normal mb-0"
+                        style="color: white; font-weight: bold;font-family: Arial, Helvetica, sans-serif;"> Complete
+                        taskDetails
+                    </p>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#toggle-navbar" aria-controls="toggle-navbar" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i class="uil-bars text-white"></i>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="toggle-navbar">
+                    <ul class="navbar-nav ms-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="uil-comments-alt"></i><span>23</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="uil-bell"></i><span>98</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i data-show="show-side-navigation1" class="uil-bars show-side-btn"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="p-4">
+            <section class="charts mt-4">
+                <div class="chart-container p-3">
+                    <h3 class="fs-6 mb-3">Complete Task Detailes</h3>
+                    <div style="min-height: 300px">
+                        <div style="overflow-y: scroll; max-height: 650px; border-radius: 5px;">
+
+                            <% for(var i=0; i<addTask.length; i++){ %>
+                                <% if(addTask[i].taskComplete==true ) { %>
+
+                                    <div class="media mb-4 p-0"
+                                        style="background-color: #918ba5; color:#1e1624 ; overflow-y: scroll; max-height: 220px;">
+                                        <div>
+
+                                            <div class="media-body p-2 col-md-9">
+                                                <span style="font-weight: bolder;">Username : <span
+                                                        style="font-weight: lighter;">
+                                                        <%= addTask[i].username %>
+                                                    </span></span>
+                                                <div class="">
+                                                    <span style="font-weight: bolder;">Task Title : <span
+                                                            style="font-weight: lighter;">
+                                                            <%= addTask[i].addTaskTitle %>
+                                                        </span></span>
+                                                </div>
+                                                <span class="" style="font-weight: bolder;">Last Date of Submition :
+                                                    <span style="font-weight: lighter;" id="addTaskDate">
+                                                        <%= addTask[i].addTaskDate %>
+                                                    </span></span>
+                                                <p class="" style="font-weight: bold;"> Tommorow's Task : <span
+                                                        style="font-weight: lighter;">
+                                                        <%= addTask[i].addTaskDiscription %>
+                                                    </span></p>
+
+                                                <% if(addTask[i].taskComplete==true ){ %>
+                                                    <span class="alert-success text-success p-1 mb-1"
+                                                        style="font-weight: bolder;">Task Completed
+                                                        By User
+
+                                                    </span></span>
+                                                    <% } else{ %>
+                                                        <div class="row">
+                                                            <span class="alert-danger text-danger p-1 mb-1 col-md-9"
+                                                                style="font-weight: bolder;">Day's left
+                                                                toComplete Task :
+                                                                <span style="font-weight: lighter;" id="demo">
+
+                                                                </span>
+
+                                                            </span>
+                                                            <span class="alert-danger text-danger p-1 mb-1 col-md-3"
+                                                                style="font-weight: bolder;">Task Percentage :
+                                                                <span style="font-weight: lighter;" id="demoTask">
+                                                                </span>
+                                                            </span>
+                                                        </div>
+
+                                                    <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <% } else{ %>
+
+                                        <% } %>
+
+                                            <% } %>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </section>
+    <script src="/javascripts/adminDashboardPage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            setInterval(function () {
+                var addTaskDate = document.getElementById("addTaskDate").innerHTML;
+                var myDate = new Date(addTaskDate);
+                var today = new Date();
+                var distance = myDate.getTime() - today.getTime();
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("demo").innerHTML = days + " Day's " + hours + " Hours "
+                    + minutes + " Minutes " + seconds + " Seconds ";
+
+
+                if (days >= 10) {
+                    document.getElementById("demoTask").innerHTML = "100%";
+                } else if (days >= 9) {
+                    document.getElementById("demoTask").innerHTML = "90%";
+                } else if (days >= 8) {
+                    document.getElementById("demoTask").innerHTML = "80%";
+                } else if (days >= 7) {
+                    document.getElementById("demoTask").innerHTML = "70%";
+                } else if (days >= 6) {
+                    document.getElementById("demoTask").innerHTML = "60%";
+                } else if (days >= 5) {
+                    document.getElementById("demoTask").innerHTML = "50%";
+                } else if (days >= 4) {
+                    document.getElementById("demoTask").innerHTML = "40%";
+                } else if (days >= 3) {
+                    document.getElementById("demoTask").innerHTML = "30%";
+                } else if (days >= 2) {
+                    document.getElementById("demoTask").innerHTML = "20%";
+                } else if (days >= (1 && 0)) {
+                    document.getElementById("demoTask").innerHTML = "10%";
+                }
+                else {
+                    return;
+                }
+
+
+                // If the count down is over, write some text 
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("demo").innerHTML = "EXPIRED";
+                }
+
+            }, 1000)
+        })
+
+    </script>
+</body>
+
+</html>

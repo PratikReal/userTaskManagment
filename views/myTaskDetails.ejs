@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LOGO</title>
+    <link rel="shortcut icon" type="image/svg" href="/images/logo.svg" />
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/adminDashboradPage.css">
+
+</head>
+
+<body style="background-color: #bfbfbd !important;">
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+        <div class="container">
+            <div class="card login-card" style="min-height: 500px">
+                <div class="row no-gutters">
+
+                    <div class="col-md-12">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                                <ul class="navbar-nav mr-auto  mt-lg-0">
+                                    <a href="/myTaskSendByAdmin"><button
+                                            class="btn btn-dark my-2 my-sm-0 pl-2 pr-2 mr-2" type="submit">goTo
+                                            Back</button></a>
+
+                                    <a href="/userTaskCompletePage"><button
+                                            class="btn btn-success my-2 my-sm-0 pl-2 pr-2 mr-2" type="submit">My
+                                            Completed Task</button></a>
+                                </ul>
+
+                                <form class="form-inline">
+                                    <input class="form-control mr-sm-2 m-2" type="search"
+                                        placeholder="Search Posts By Dates" aria-label="Search">
+                                </form>
+                            </div>
+                        </nav>
+                        <div class="card-body pt-0">
+                            <h1 class="navbar-brand " href="#"> Tasks Details</h1>
+                            <div style="overflow-y: scroll; max-height: 450px;">
+
+
+                                <div class="media p-2 mb-2 " style="background-color: #d4d4d4;">
+                                    <div class="media-body">
+                                        <div class="row d-flex m-0">
+                                            <p class="ml-0" style="font-weight: bolder;">Task Title : <span
+                                                    style="font-weight: lighter;">
+                                                    <%= id.addTaskTitle %>
+                                                </span></p>
+                                        </div>
+
+                                        <p class="" style=" font-weight: bolder;"> Task Submission Date : <span
+                                                style="font-weight: lighter;" id="addTaskDate">
+                                                <%= id.addTaskDate %>
+                                            </span></p>
+                                        <p class="mb-1" style="font-weight: bold;"> Task Discription : <span
+                                                style="font-weight: lighter;">
+                                                <%= id.addTaskDiscription %>
+
+                                            </span></p>
+
+                                        <p class="alert-danger text-danger p-2" style=" font-weight: bolder;"> Day's
+                                            Left To complete Task :
+                                            <span style="font-weight: lighter;" id="demo">
+                                            </span>
+
+                                        </p>
+                                        <p class="alert-danger text-danger p-2" style=" font-weight: bolder;"> Task
+                                            Performence Percentage
+                                            <span style="font-weight: lighter;" id="demoTask">
+                                            </span>
+                                        </p>
+                                        <div class="mesgs p-2 mb-2 ml-0" style="width: 60%;">
+                                            <div class="msg_history" style="max-height: 150px;">
+                                                <% for(var i=0; i<id.comments.length; i++){ %>
+                                                    <div class="incoming_msg ">
+                                                        <div class="received_msg">
+                                                            <div class="received_withd_msg">
+                                                                <p>
+                                                                    <%= id.comments[i].addCommentsDiscription %>
+                                                                </p>
+                                                                <span class="time_date"> <span>
+                                                                        <%= id.comments[i].user %>
+                                                                    </span>
+                                                                    <%= id.comments[i].time %> | <%= id.comments[i].date
+                                                                            %>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <% } %>
+                                            </div>
+
+                                        </div>
+                                        <div class="mt-4 mb-4" style="width: 60%;">
+                                            <form method="POST" action="/addCommentsByUser/<%= id._id %>">
+
+                                                <div class="form-group ">
+                                                    <label style="font-weight: bolder;" for="comments">Comments</label>
+                                                    <textarea id="comments" name="addCommentsDiscription"
+                                                        class="form-control" rows="3" required style="height: 100px;" >
+                                                    </textarea>
+
+                                                </div>
+                                                <input name="login" id="login" class="btn btn-primary mt-2"
+                                                    type="submit" value="Add Comments">
+                                            </form>
+                                        </div>
+
+                                        
+
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            setInterval(function () {
+                var addTaskDate = document.getElementById("addTaskDate").innerHTML;
+                console.log(addTaskDate);
+                var myDate = new Date(addTaskDate);
+                var today = new Date();
+                var distance = myDate.getTime() - today.getTime();
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+                document.getElementById("demo").innerHTML = days + " Day's " + hours + " Hours "
+                    + minutes + " Minutes " + seconds + " Seconds ";
+
+                if (days >= 10) {
+                    document.getElementById("demoTask").innerHTML = "100%";
+                } else if (days >= 9) {
+                    document.getElementById("demoTask").innerHTML = "90%";
+                } else if (days >= 8) {
+                    document.getElementById("demoTask").innerHTML = "80%";
+                } else if (days >= 7) {
+                    document.getElementById("demoTask").innerHTML = "70%";
+                } else if (days >= 6) {
+                    document.getElementById("demoTask").innerHTML = "60%";
+                } else if (days >= 5) {
+                    document.getElementById("demoTask").innerHTML = "50%";
+                } else if (days >= 4) {
+                    document.getElementById("demoTask").innerHTML = "40%";
+                } else if (days >= 3) {
+                    document.getElementById("demoTask").innerHTML = "30%";
+                } else if (days >= 2) {
+                    document.getElementById("demoTask").innerHTML = "20%";
+                } else if (days >= (1 && 0)) {
+                    document.getElementById("demoTask").innerHTML = "10%";
+                } else if (days >= -1) {
+                    document.getElementById("demoTask").innerHTML = "-10%";
+                } else if (days >= -2) {
+                    document.getElementById("demoTask").innerHTML = "-20%";
+                }
+                else {
+                    return;
+                }
+
+                // If the count down is over, write some text 
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("demo").innerHTML = "EXPIRED";
+                }
+
+            }, 1000)
+        })
+
+    </script>
+
+</body>
+
+</html>
